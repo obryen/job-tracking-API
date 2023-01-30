@@ -4,6 +4,7 @@ const {
 } = require("../services/contracts");
 const { getProfile } = require("../middleware/getProfile");
 const { fetchUnpaidJobs, payJob } = require("../services/jobs");
+const { deposit } = require("../services/deposits");
 
 router.get(
   "/contracts/:id",
@@ -53,5 +54,16 @@ router.post(
     const paidJob = await payJob(jobId, clientId);
 
     res.json(paidJob);
+  })
+);
+
+router.post(
+  "/balances/deposit/:userId",
+  asyncHandler(async (req, res) => {
+    const clientId = req.params.userId;
+    const { amount } = req.body;
+    const updatedClienstProfile = await deposit(clientId, amount);
+
+    res.json(updatedClienstProfile);
   })
 );

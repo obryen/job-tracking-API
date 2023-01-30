@@ -1,9 +1,0 @@
-const ErrorMsgs = {
-    JOB_PAID: "Job is already paid",
-    JOB_NOT_FOUND: "This job does not exist",
-    INSUFFICIENT_FUNDS: "Insufficient funds"
-}
-
-module.exports = {
-    ErrorMsgs
-};
