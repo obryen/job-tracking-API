@@ -5,6 +5,7 @@ const {
 const { getProfile } = require("../middleware/getProfile");
 const { fetchUnpaidJobs, payJob } = require("../services/jobs");
 const { deposit } = require("../services/deposits");
+const { fetchBestPaidProfession, fetchBestPayingClients } = require("../services/analytics");
 
 router.get(
   "/contracts/:id",
@@ -67,3 +68,25 @@ router.post(
     res.json(updatedClienstProfile);
   })
 );
+
+router.get(
+  "/admin/best-profession",
+  asyncHandler(async (req, res) => {
+    const { start, end } = req.query;
+    const bestPaidProfession = await fetchBestPaidProfession(start, end);
+
+    res.json(bestPaidProfession);
+  })
+);
+
+router.get(
+  "/admin/best-clients",
+  asyncHandler(async (req, res) => {
+    const { start, end, limit } = req.query;
+    const bestPayingClients = await fetchBestPayingClients(start, end, limit);
+
+    res.json(bestPayingClients);
+  })
+);
+
+module.exports = router;
