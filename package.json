@@ -1,5 +1,5 @@
 {
-  "name": "deel-task",
+  "name": "job-tracking-api",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
