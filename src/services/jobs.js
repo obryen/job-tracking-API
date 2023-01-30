@@ -1,7 +1,8 @@
 const { Op } = require("sequelize");
 const { Contract, Job, Profile, sequelize } = require("../model");
-const HttpError = require("../httpError");
+const HttpError = require("../errors/httpError");
 const { ErrorMsgs } = require("../enums/error-messages.enum");
+const { ContractStatus } = require("../enums/contract-status.enum");
 
 async function fetchUnpaidJobs(userId) {
   return Job.findAll({

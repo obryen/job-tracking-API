@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const { Contract } = require("../model");
+const { ContractStatus } = require("../enums/contract-status.enum");
 
 async function fetchUserContractById(id, userId) {
   return Contract.findOne({

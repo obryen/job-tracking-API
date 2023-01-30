@@ -1,7 +1,8 @@
 const { Contract, Job, Profile, sequelize } = require("../model");
-const HttpError = require("../httpError");
+const HttpError = require("../errors/httpError");
 const { ErrorMsgs } = require("../enums/error-messages.enum");
 const { JOBS_TO_PAY_PERCENTAGE } = require("../utilities/constants");
+const { ContractStatus } = require("../enums/contract-status.enum");
 
 async function fetchTotalAmountForUnpaidJobs(clientId) {
   return Job.sum("price", {

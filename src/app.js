@@ -2,8 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { sequelize } = require("./model");
 const app = express();
-const router = new Router();
-const util = require("util");
+const router = require("./routes/router");
+const util = require("util")
+
+const HttpError = require("./errors/httpError");
 
 app.use(bodyParser.json());
 app.set("sequelize", sequelize);

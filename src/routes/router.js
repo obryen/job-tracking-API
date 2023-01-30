@@ -1,3 +1,6 @@
+const { Router } = require("express");
+const asyncHandler = require("express-async-handler");
+
 const {
   fetchUserContractsNotTerminated,
   fetchUserContractById,
@@ -5,7 +8,12 @@ const {
 const { getProfile } = require("../middleware/getProfile");
 const { fetchUnpaidJobs, payJob } = require("../services/jobs");
 const { deposit } = require("../services/deposits");
-const { fetchBestPaidProfession, fetchBestPayingClients } = require("../services/analytics");
+const {
+  fetchBestPaidProfession,
+  fetchBestPayingClients,
+} = require("../services/analytics");
+
+const router = new Router();
 
 router.get(
   "/contracts/:id",
